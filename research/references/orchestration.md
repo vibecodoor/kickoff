@@ -43,6 +43,11 @@ Choose from these capabilities; do not run them as a fixed waterfall:
 
 Spawn or run a track only when its result could change the recommendation, reduce a material uncertainty, resolve a contradiction, or verify a load-bearing claim.
 
+Model tier per track (rule in SKILL.md "Agent model tier"):
+- **`haiku`**: existence and number checks, quoting one primary source, KB lookups.
+- **`sonnet`**: primary sources, alternatives, real-world signal, freshness, regional, technical documentation, benchmark methodology.
+- **`opus`**: legal/regulatory, medical, and counter-evidence tracks attacking a load-bearing recommendation.
+
 ## Parallelism Rules
 
 After framing, run independent tracks in parallel when possible. Typical parallel pairs:

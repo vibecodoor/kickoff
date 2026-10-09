@@ -20,6 +20,13 @@ Run the pipeline in one pass, pausing for the user only at Stage 1 questions.
 - **No double research.** Creator's internal research fan-out (its steps 2–3) is replaced by Stage 2. Creator only synthesizes.
 - **Persist artifacts between stages** so the pipeline survives `/compact`: each stage writes its output to `devkit/RESEARCH.md` (created at Stage 1, grown by later stages). Create `devkit/` at the project root if absent.
 - **Announce the stage** in one line when entering it (e.g. "Stage 2/3 — Deep research: 3 web tracks").
+- **Agent model tier** (lite compute router). Spawn only when delegation is already justified; a cheaper tier is never a reason to spawn more. Every agent gets an explicit `model`, decided per track in this order:
+  1. **STRONG → `opus`** if any holds: adversarial/contrarian review of a load-bearing recommendation; resolving conflicting evidence that decides go/no-go or the stack; security, auth, legal or money-handling questions; architecture choices that are expensive to reverse.
+  2. **FAST → `haiku`** only with positive evidence it is safe: bounded lookup/extraction with an obvious completion criterion (fetching/quoting docs, checking one claim against one source, existence/number checks).
+  3. **BALANCED → `sonnet`** for everything else: multi-source synthesis, comparisons, landscape scans, version/API verification across docs and source.
+  - Unsure between two tiers → the stronger one. Explicit user model choice wins. Forks inherit the parent model (don't set one). `fable` only on explicit request. On hosts without per-agent model choice, skip this rule.
+  - Name the tier per track in the stage announcement.
+- **Existing research is input, not something to redo.** If the project already holds a research report, Stage 2 distills and spot-verifies it (load-bearing claims only) instead of running fresh web tracks.
 
 ## Stage 1 — Clarify
 

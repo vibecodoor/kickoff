@@ -75,6 +75,13 @@ Useful tracks include primary sources, alternatives, real-world signal, counter-
 
 Run the Stage Review checkpoint at macro-stage boundaries, not after every sub-step, and proceed without pausing for the user (see Staged execution above). Do not simulate multiple agents as a quality mechanism when separate workers are unavailable; run the same adaptive workflow directly and label uncertainty honestly.
 
+**Agent model tier.** Give every spawned agent an explicit `model`, decided in this order:
+1. **STRONG → `opus`** if any holds: adversarial/contrarian review of a load-bearing recommendation; resolving conflicting evidence that decides go/no-go or the stack; security, auth, legal, medical, or money-handling; architecture that is expensive to reverse.
+2. **FAST → `haiku`** only with positive evidence it is safe: bounded lookup/extraction with an obvious completion criterion.
+3. **BALANCED → `sonnet`** for everything else.
+
+Unsure between two tiers → the stronger one. Explicit user model choice wins. Forks inherit the parent model. `fable` only on explicit request. On hosts without per-agent model choice, skip this rule. Per-track mapping is in orchestration.md; per-reviewer mapping is in adversarial-review.md.
+
 Full orchestration rules: [references/orchestration.md](references/orchestration.md).
 
 ## The workflow

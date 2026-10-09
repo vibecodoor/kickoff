@@ -21,6 +21,11 @@ After the draft report exists, spawn three stance-based reviewers **in parallel*
 
 Each reviewer: under 200 words, direct, no hedging, no balance-seeking. Their job is to attack from their angle; synthesis happens later.
 
+Model tier (see SKILL.md "Agent model tier"):
+- Contrarian → `opus` (contrarian review of a load-bearing recommendation);
+- Outsider and Executor → `sonnet`;
+- cross-review reviewers below → `sonnet`.
+
 ## Cross-review of specialist tracks (Exhaustive only)
 
 Before merging specialist track outputs:
